@@ -8,8 +8,9 @@ EventPass is a production-grade full-stack event ticketing platform featuring re
 
 ## 🚀 Live Links & Deployment Architecture
 
-- **Frontend Application (Cloudflare Workers)**: [https://event-ticketing-frontend.franc9ok.workers.dev](https://event-ticketing-frontend.franc9ok.workers.dev) (React 18, Vite, TypeScript, Cloudflare Workers Static Assets)
-- **Backend API Server**: `http://localhost:4000` (Node.js, Express, Prisma ORM, Neon PostgreSQL)
+- **Frontend Application (Vercel Production)**: [https://event-ticketing-frontend-one.vercel.app](https://event-ticketing-frontend-one.vercel.app) (React 18, Vite, TypeScript, SPA Rewrites)
+- **Frontend Application (Cloudflare Workers)**: [https://event-ticketing-frontend.franc9ok.workers.dev](https://event-ticketing-frontend.franc9ok.workers.dev) (Cloudflare Workers Static Assets)
+- **Backend API (Render)**: [https://event-ticketing-api-xnnt.onrender.com](https://event-ticketing-api-xnnt.onrender.com) (Node.js, Express, Prisma ORM, Neon PostgreSQL)
 
 ---
 
