@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Production builds
+dist/
+.cloudflare/
+
+# Environment variables & secrets (NEVER commit secrets)
+.env
+.env.*
+!.env.example
+
+# Temporary and backup directories
+scratch/
+*.log
+coverage/

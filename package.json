@@ -1,0 +1,11 @@
+{
+  "name": "event-ticketing",
+  "version": "1.0.0",
+  "description": "Event Ticketing Platform with Paystack payments, PostgreSQL, Express, and React",
+  "scripts": {
+    "test": "npm --prefix backend test",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build"
+  }
+}

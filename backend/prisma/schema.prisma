@@ -1,0 +1,68 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  FAILED
+  EXPIRED
+}
+
+model Event {
+  id        String   @id @default(uuid())
+  title     String
+  date      DateTime
+  venue     String
+  price     Int
+  capacity  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  orders    Order[]
+  tickets   Ticket[]
+
+  @@map("events")
+}
+
+model Order {
+  id          String      @id @default(uuid())
+  reference   String      @unique
+  buyerEmail  String
+  status      OrderStatus @default(PENDING)
+  quantity    Int
+  totalAmount Int
+  expiresAt   DateTime
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  eventId     String
+  event       Event       @relation(fields: [eventId], references: [id])
+  tickets     Ticket[]
+
+  @@index([status, expiresAt])
+  @@index([eventId])
+  @@map("orders")
+}
+
+model Ticket {
+  id          String    @id @default(uuid())
+  ticketCode  String    @unique
+  checkedInAt DateTime?
+  createdAt   DateTime  @default(now())
+
+  orderId     String
+  order       Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  eventId     String
+  event       Event     @relation(fields: [eventId], references: [id])
+
+  @@index([orderId])
+  @@index([eventId])
+  @@map("tickets")
+}
