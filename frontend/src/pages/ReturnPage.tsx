@@ -63,7 +63,8 @@ export const ReturnPage: React.FC<ReturnPageProps> = ({
       setSimulating(true);
       setError(null);
       // In local dev/test mode, trigger payment confirmation
-      const res = await fetch('/webhooks/paystack', {
+      const apiOrigin = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.replace(/\/api\/?$/, '') : '';
+      const res = await fetch(`${apiOrigin}/webhooks/paystack`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

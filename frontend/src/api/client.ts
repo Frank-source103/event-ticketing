@@ -1,6 +1,6 @@
 import { EventItem, Order, CreateOrderResponse } from '../types/index.ts';
 
-const API_BASE = '/api';
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
 export async function fetchEvents(): Promise<EventItem[]> {
   const res = await fetch(`${API_BASE}/events`);
